@@ -3,10 +3,12 @@
 
 <head>
     <title>Validators</title>
-    <script src="../../bower_components/angular/angular.js"></script>
-    <script src="../../src/debug/debug.js"></script>
-    <script src="../../src/numbers/number-only.js"></script>
-    <script src="../../src/ng-utilities.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../src/debug/debug.js"></script>
+    <script src="../src/strings/pad.js"></script>
+    <script src="../src/numbers/number-only.js"></script>
+    <script src="../src/numbers/fractional.js"></script>
+    <script src="../src/ng-utilities.js"></script>
 
     <script src="app.js"></script>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
@@ -27,6 +29,24 @@
 	    			<input type="text" ng-model="integerOnly" ngu-input-digits-minus-only>
 	    		</li>
 	    		<li> ==> {{integerOnly}} : (typeof is {{integerOnly | nguDebugType}})</li>
+	    	</ul>
+	    	<h3>Fractional</h3>
+	    	<ul>
+	    		<li>Display decimal part
+	    			<input type="text" ng-model="decimalValue">
+	    		</li>
+	    		<li> Decimal part 2 values==> {{decimalValue | nguFractionalPart:2:2}}</li>
+	    	</ul>
+	    	<h3>Strings</h3>
+	    	<ul>
+	    		<li>Left Pad
+	    			<input type="text" ng-model="leftPad">
+	    		</li>
+	    		<li> Left Pad 4 with '0'==> {{leftPad | nguPadLeft:0:4}}</li>
+	    		<li>Right Pad
+	    			<input type="text" ng-model="rightPad">
+	    		</li>
+	    		<li> Right Pad 4 with '0'==> {{rightPad | nguPadRight:0:4}}</li>
 	    	</ul>
     	</form>
     </div>
