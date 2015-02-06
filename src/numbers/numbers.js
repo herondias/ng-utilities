@@ -26,6 +26,29 @@ angular.module('ngUtilities.numbers', [])
         };
     })
     /**
+     * Defines a filter to display only fractional part.
+     * Reuse the angular number filter to extract fractional part.
+     */
+    .filter('nguFractionalPart', ['$filter', function ($filter) {
+        return function (input, length) {
+
+            if (!input) {
+                return undefined;
+            }
+
+            // Return number.
+            var number = $filter('number')(input, length);
+
+            // Remove integer part.
+            var parts = number.split('.');
+            var fractionalPart = '';
+            if (parts.length > 1) {
+                fractionalPart = parts[1];
+            }
+            return fractionalPart;
+        };
+    }])
+    /**
      * Force a input[type=text] to accept only digits as input.
      */
     .directive('nguInputDigitsOnly', ['$filter', function($filter) {
@@ -42,7 +65,7 @@ angular.module('ngUtilities.numbers', [])
                     if(transformedVal !== '') {
                         return parseInt(transformedVal, 10);
                     } else {
-                        return;
+                        return undefined;
                     }
                 });
             }
@@ -62,10 +85,10 @@ angular.module('ngUtilities.numbers', [])
                         ctrl.$setViewValue(transformedVal);
                         ctrl.$render();
                     }
-                    if(transformedVal !== '') {
+                    if(transformedVal !== '' && transformedVal !== '-') {
                         return parseInt(transformedVal, 10);
                     } else {
-                        return;
+                        return undefined;
                     }
                 });
             }
