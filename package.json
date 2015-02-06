@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "description": "Angular utilities for validation, filters...",
     "scripts": {
+        "postinstall": "bower install",
+        "pretest": "jshint src test",
         "test": "grunt test"
     },
     "repository": {
@@ -17,10 +19,18 @@
     "license": "MIT",
     "readmeFilename": "README.md",
     "devDependencies": {
+        "jshint": "2.3.0",
         "grunt": "~0.4",
         "grunt-contrib-uglify": "~0.4",
         "grunt-contrib-concat": "~0.3.0",
         "grunt-karma": "~0.6.2",
-        "grunt-contrib-clean": "~0.5.0"
+        "grunt-contrib-clean": "~0.5.0",
+        "load-grunt-tasks": "^0.4.0",
+        "jshint-stylish": "^0.2.0",
+        "karma-coverage": "^0.2.7",
+        "karma-jasmine": "^0.1.5",
+        "karma-junit-reporter": "^0.2.2",
+        "karma-mocha-reporter": "^0.3.1",
+        "karma-phantomjs-launcher": "^0.1.4"
     }
 }

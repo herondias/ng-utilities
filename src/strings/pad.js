@@ -7,8 +7,8 @@ angular.module('ngUtilities.strings', [])
     .filter('nguPadLeft', function () {
         return function (input, pad, length) {
             // if not number.
-            if(angular.isString(input)) {
-                var l = parseInt(length) - input.length;
+            if(input && pad) {
+                var l = parseInt(length) - input.toString().length;
                 for(var i = 0; i < l; i++) {
                     input = pad.toString() + input;
                 }
@@ -24,8 +24,8 @@ angular.module('ngUtilities.strings', [])
     .filter('nguPadRight', function () {
         return function (input, pad, length) {
             // if not number.
-            if(angular.isString(input)) {
-                var l = parseInt(length) - input.length;
+            if(input && pad) {
+                var l = parseInt(length) - input.toString().length;
                 for(var i = 0; i < l; i++) {
                     input += pad.toString();
                 }
