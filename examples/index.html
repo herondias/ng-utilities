@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>Validators</title>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../src/debug/debug.js"></script>
+    <script src="../../src/numbers/number-only.js"></script>
+    <script src="../../src/ng-utilities.js"></script>
+
+    <script src="app.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container" ng-controller="SampleCtrl">
+    	<form role="form">
+	    	<h1>Samples</h1>
+	    	<h2>Numbers</h2>
+	    	<h3>Number only</h3>
+	    	<ul>
+	    		<li>Allow Positive Integer Only (>= 0)
+	    			<input type="text" ng-model="positiveIntegerOnly" ngu-input-digits-only>
+	    		</li>
+	    		<li> ==> {{positiveIntegerOnly}} : (typeof is {{positiveIntegerOnly | nguDebugType}})</li>
+	    		<li>Allow Integer Only
+	    			<input type="text" ng-model="integerOnly" ngu-input-digits-minus-only>
+	    		</li>
+	    		<li> ==> {{integerOnly}} : (typeof is {{integerOnly | nguDebugType}})</li>
+	    	</ul>
+    	</form>
+    </div>
+</body>
+
+</html>
