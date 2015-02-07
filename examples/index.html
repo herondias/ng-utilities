@@ -4,6 +4,7 @@
 <head>
     <title>Validators</title>
     <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
     <script src="../src/debug/debug.js"></script>
     <script src="../src/strings/module.js"></script>
     <script src="../src/strings/pad.js"></script>
@@ -12,6 +13,8 @@
     <script src="../src/numbers/module.js"></script>
     <script src="../src/numbers/fractional.js"></script>
     <script src="../src/numbers/integeronly.js"></script>
+    <script src="../src/validators/module.js"></script>
+    <script src="../src/validators/integers.js"></script>
     <script src="../src/ng-utilities.js"></script>
 
     <script src="app.js"></script>
@@ -20,7 +23,7 @@
 
 <body>
     <div class="container" ng-controller="SampleCtrl">
-    	<form role="form">
+    	<form role="form" name="validationForm">
 	    	<h1>Samples</h1>
 	    	<h2>Numbers</h2>
 	    	<h3>Number only</h3>
@@ -51,6 +54,18 @@
 	    			<input type="text" ng-model="rightPad">
 	    		</li>
 	    		<li> Right Pad 4 with '0'==> {{rightPad | nguPadRight:0:4}}</li>
+	    	</ul>
+	    	<h2>Vaidators</h2>
+	    	<h3>Integers</h3>
+	    	<ul>
+	    		<li>With minimum
+	    			<input type="text" name="valIntMin" ng-model="valIntMin" ngu-val-int-min="5" required>
+	    			<pre>validationForm.valIntMin.$error = {{ validationForm.valIntMin.$error | json }}</pre>
+	    			<div ng-messages="validationForm.valIntMin.$error">
+					    <span ng-message="required">Required</span>
+					    <span ng-message="nguValIntMin">Too small!</span>
+					</div>
+	    		</li>
 	    	</ul>
     	</form>
     </div>

@@ -6,7 +6,7 @@
  * @name app
  * @type {angular.Module}
  */
-angular.module('app', ['ngUtilities'])
+angular.module('app', ['ngMessages', 'ngUtilities'])
 	.controller('SampleCtrl', ['$scope', function($scope) {
 
     }]);
