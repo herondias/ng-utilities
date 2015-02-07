@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngUtilities.strings', [])
+angular.module('ngUtilities.strings')
     /**
      * Defines a filter to left-pad a value.
      */

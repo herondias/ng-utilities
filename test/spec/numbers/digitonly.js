@@ -99,3 +99,62 @@ describe('Directive: nguInputDigitsMinusOnly', function() {
         expect($scope.val).toEqual(-6789);
     });
 });
+
+describe('Filter: nguDigitsOnly', function() {
+
+    // load the service's module
+    beforeEach(angular.mock.module('ngUtilities'));
+
+    // Get filter.
+    var $filter;
+
+    // inject filter.
+    beforeEach(function() {
+        angular.mock.inject(function(_$filter_) {
+            $filter = _$filter_('nguDigitsOnly');
+        });
+    });
+
+    it('shall extract digits', function() {
+        expect($filter('')).toEqual('');
+        expect($filter('A9A7')).toEqual('97');
+        expect($filter('1234')).toEqual('1234');
+        expect($filter('000!')).toEqual('000');
+    });
+
+    it('shall return as is if not string', function() {
+        expect($filter(null)).toBeNull();
+        expect($filter(undefined)).toBeUndefined();
+        expect($filter(1234)).toEqual(1234);
+    });
+});
+
+describe('Filter: nguDigitsMinusOnly', function() {
+
+    // load the service's module
+    beforeEach(angular.mock.module('ngUtilities'));
+
+    // Get filter.
+    var $filter;
+
+    // inject filter.
+    beforeEach(function() {
+        angular.mock.inject(function(_$filter_) {
+            $filter = _$filter_('nguDigitsMinusOnly');
+        });
+    });
+
+    it('shall extract digits', function() {
+        expect($filter('')).toEqual('');
+        expect($filter('A9A7')).toEqual('97');
+        expect($filter('1234')).toEqual('1234');
+        expect($filter('-1234----')).toEqual('-1234');
+        expect($filter('-1998')).toEqual('-1998');
+    });
+
+    it('shall return as is if not string', function() {
+        expect($filter(null)).toBeNull();
+        expect($filter(undefined)).toBeUndefined();
+        expect($filter(1234)).toEqual(1234);
+    });
+});
