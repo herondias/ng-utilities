@@ -27,7 +27,7 @@ describe('Directive: nguValLengthMin', function() {
         expect(form.testValue.$valid).toBe(true);
     });
 
-    it('shall validate with empty value.', function() {
+    it('shall validate with empty value and 0-min.', function() {
         el = $compile('<form name="form"><input type="text" name="testValue" ng-model="testValue" ngu-val-length-min="0"></form>')($scope);
         $scope.$digest();
         form = $scope.form;
@@ -35,6 +35,16 @@ describe('Directive: nguValLengthMin', function() {
         form.testValue.$setViewValue('');
         expect($scope.testValue).toEqual('');
         expect(form.testValue.$valid).toBe(true);
+    });
+
+    it('shall not validate with empty value and 3-min.', function() {
+        el = $compile('<form name="form"><input type="text" name="testValue" ng-model="testValue" ngu-val-length-min="3"></form>')($scope);
+        $scope.$digest();
+        form = $scope.form;
+
+        form.testValue.$setViewValue('   ');
+        expect($scope.testValue).toBeUndefined();
+        expect(form.testValue.$valid).toBe(false);
     });
 
     it('shall not validate with invalid value.', function() {
@@ -85,7 +95,7 @@ describe('Directive: nguValLengthMax', function() {
         expect(form.testValue.$valid).toBe(true);
     });
 
-    it('shall validate with empty value.', function() {
+    it('shall validate with empty value and 0-length.', function() {
         el = $compile('<form name="form"><input type="text" name="testValue" ng-model="testValue" ngu-val-length-max="5"></form>')($scope);
         $scope.$digest();
         form = $scope.form;

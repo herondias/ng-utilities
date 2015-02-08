@@ -12,6 +12,9 @@ angular.module('ngUtilities.validators')
                 ctrl.$validators.nguValLengthMin = function(value) {
                     var parsedMin = parseInt(attr.nguValLengthMin);
                     if (!isNaN(parsedMin)) {
+                        if(value && value.trim) {
+                            value = value.trim();
+                        }
                         var length = $filter('nguLength')(value);
                         return parsedMin <= length;
                     } else {
@@ -32,6 +35,9 @@ angular.module('ngUtilities.validators')
                 ctrl.$validators.nguValLengthMin = function(value) {
                     var parsedMax = parseInt(attr.nguValLengthMax);
                     if (!isNaN(parsedMax)) {
+                        if(value && value.trim) {
+                            value = value.trim();
+                        }
                         var length = $filter('nguLength')(value);
                         return parsedMax >= length;
                     } else {
