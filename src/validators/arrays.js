@@ -4,7 +4,7 @@ angular.module('ngUtilities.validators')
     /**
      * Defines a validator to check if a value is in a array.
      */
-    .directive('nguValIn', function() {
+    .directive('nguValIn', ['$filter', function($filter) {
         return {
             restrict: 'A',
             require: 'ngModel',
@@ -13,19 +13,15 @@ angular.module('ngUtilities.validators')
             },
             link: function(scope, element, attr, ctrl) {
                 ctrl.$validators.nguValIn = function(value) {
-                    if(angular.isArray(scope.haystack)) {
-                        return scope.haystack.indexOf(value) >= 0;
-                    } else {
-                        return false;
-                    }
+                    return $filter('nguInArray')(value, scope.haystack);
                 };
             }
         };
-    })
+    }])
     /**
      * Defines a validator to check if a value is not in a array.
      */
-    .directive('nguValNotIn', function() {
+    .directive('nguValNotIn', ['$filter', function($filter) {
         return {
             restrict: 'A',
             require: 'ngModel',
@@ -34,12 +30,8 @@ angular.module('ngUtilities.validators')
             },
             link: function(scope, element, attr, ctrl) {
                 ctrl.$validators.nguValNotIn = function(value) {
-                    if(angular.isArray(scope.haystack)) {
-                        return scope.haystack.indexOf(value) < 0;
-                    } else {
-                        return false;
-                    }
+                    return angular.isArray(scope.haystack) && $filter('nguInArray')(value, scope.haystack) === false;
                 };
             }
         };
-    });
+    }]);

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('ngUtilities.validators', ['ngUtilities.strings']);
+angular.module('ngUtilities.validators', ['ngUtilities.strings', 'ngUtilities.arrays']);

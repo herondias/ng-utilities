@@ -16,6 +16,8 @@ module.exports = function(config) {
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'bower_components/jquery/dist/jquery.js',
+            'bower_components/moment/min/moment.min.js',
+            'bower_components/moment-timezone/builds/moment-timezone-with-data.min.js',
             'src/**/module.js',
             'src/**/*.js',
             'test/mock/**/*.js',
