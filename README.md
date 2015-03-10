@@ -6,8 +6,7 @@ How can I install it?
 1) Get the library:
 
 **Direct Download**
-Download a latest build from https://github.com/julb/ng-utilities/releases
-it contains development and minified production files in `dist/` directory.
+Download a latest build from https://github.com/julb/ng-utilities. It contains development and minified production files in `dist/` directory.
 
 **Using Bower**
         

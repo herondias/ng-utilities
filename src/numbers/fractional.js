@@ -13,7 +13,12 @@ angular.module('ngUtilities.numbers')
             }
 
             // Return number.
-            var number = $filter('number')(input, length);
+            var number;
+            if(angular.isUndefined(length)) {
+                number = input + '';
+            } else {
+                number = $filter('number')(input, length);
+            }
 
             // Remove integer part.
             var parts = number.split('.');

@@ -26,6 +26,12 @@ describe('Filter: nguFractionalPart', function() {
         expect($filter(4.25, 0)).toEqual('');
     });
 
+    it('shall be as-is if length undefined', function() {
+        expect($filter(4)).toEqual('');
+        expect($filter(4.2)).toEqual('2');
+        expect($filter(4.25)).toEqual('25');
+    });
+
     it('shall be 2-length if length set to 2', function() {
         expect($filter(4, 2)).toEqual('00');
         expect($filter(4.2, 2)).toEqual('20');
