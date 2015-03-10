@@ -49,10 +49,8 @@ module.exports = function(grunt) {
             utilities: {
                 files: {
                     'dist/ng-utilities.js': [
-                        'src/debug/*.js',
-                        'src/numbers/*.js',
-                        'src/strings/*.js',
-                        'src/*.js'
+                        'src/**/module.js',
+                        'src/**/*.js'
                     ]
                 }
             }
