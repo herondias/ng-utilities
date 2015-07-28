@@ -1,6 +1,6 @@
 {
     "name": "ng-utilities",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Angular utilities for validation, filters...",
     "scripts": {
         "postinstall": "bower install",
